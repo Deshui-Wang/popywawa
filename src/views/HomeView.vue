@@ -79,11 +79,11 @@ const features = [
     char: '童',
     desc: '传统文化的潮流新生，用匠心和东方美学重新定义“玩偶”的生命力。',
     images: [
-      '/pic/wentongzi/wtz01.jgp',
-      '/pic/wentongzi/wtz02.jgp',
-      '/pic/wentongzi/wtz03.jgp',
-      '/pic/wentongzi/wtz04.jgp',
-      '/pic/wentongzi/wtz05.jgp'
+      '/pic/wentongzi/wtz01.jpg',
+      '/pic/wentongzi/wtz02.jpg',
+      '/pic/wentongzi/wtz03.jpg',
+      '/pic/wentongzi/wtz04.jpg',
+      '/pic/wentongzi/wtz05.jpg'
     ]
   }
 ]
