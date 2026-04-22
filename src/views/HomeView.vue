@@ -2,7 +2,11 @@
   <main class="main-content">
     <!-- Hero Section -->
     <section class="hero-section animate-fade-in">
-      <h1 class="hero-title">Experience the <br/><span class="gradient-text">Future of Play</span></h1>
+      <div class="hero-title-wrapper">
+        <img src="/pic/277.png" class="hero-ornament left" />
+        <h1 class="hero-title">Experience the <br/><span class="gradient-text">Future of Play</span></h1>
+        <img src="/pic/177.png" class="hero-ornament right" />
+      </div>
       <p class="hero-subtitle">
         Shuo(硕) is Shun(顺)，is财，is砚，but Shuo not only this，Shuo is Little Fish and like Shui，so Shuo is DeShui. I'm Shuo，I'm Sure！
       </p>
@@ -107,7 +111,47 @@ const goToDetail = (id) => {
 
 .hero-section {
   text-align: center;
+  position: relative;
 }
+
+.hero-title-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.hero-ornament {
+  position: absolute;
+  width: 200px; 
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+.hero-ornament.left {
+  top: 65%;
+  left: -240px;
+  width: 185px; /* 视觉补偿：稍微拉小，使其看起来与右侧等大 */
+  transform: translateY(-50%) rotate(-12deg);
+}
+
+.hero-ornament.right {
+  top: 50%;
+  right: -240px;
+  width: 200px;
+  transform: translateY(-50%) rotate(12deg);
+  animation-delay: -3s;
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(-50%) translateY(0) rotate(var(--rot, -10deg)); }
+  50% { transform: translateY(-50%) translateY(-20px) rotate(var(--rot, -10deg)); }
+}
+
+/* 这里的变量处理 */
+.hero-ornament.left { --rot: -10deg; }
+.hero-ornament.right { --rot: 10deg; }
 
 .hero-title {
   font-size: 5rem;
