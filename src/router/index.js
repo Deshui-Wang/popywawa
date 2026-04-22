@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ListView from '../views/ListView.vue'
+import SeriesView from '../views/SeriesView.vue'
+import DetailView from '../views/DetailView.vue'
+import PublishView from '../views/PublishView.vue'
 
 const routes = [
   {
@@ -12,6 +15,21 @@ const routes = [
     path: '/list/:id',
     name: 'list',
     component: ListView
+  },
+  {
+    path: '/series/:brandId/:seriesId',
+    name: 'series',
+    component: SeriesView
+  },
+  {
+    path: '/detail/:brandId/:seriesId',
+    name: 'detail',
+    component: DetailView
+  },
+  {
+    path: '/publish',
+    name: 'publish',
+    component: PublishView
   }
 ]
 

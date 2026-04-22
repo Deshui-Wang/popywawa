@@ -8,15 +8,14 @@
       <nav class="nav-links">
         <router-link to="/" class="nav-item">🏠 Home</router-link>
         <a href="#" class="nav-item">✨ Features</a>
-        <a href="#" class="nav-item">🚀 Launch</a>
       </nav>
       <div class="actions">
         <el-button type="primary" round class="premium-button">Join Now</el-button>
       </div>
     </header>
 
-    <router-view v-slot="{ Component }">
-      <component :is="Component" />
+    <router-view v-slot="{ Component, route }">
+      <component :is="Component" :key="route.fullPath" />
     </router-view>
 
     <!-- Footer -->
