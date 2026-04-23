@@ -5,6 +5,7 @@ import SeriesView from '../views/SeriesView.vue'
 import DetailView from '../views/DetailView.vue'
 import PublishView from '../views/PublishView.vue'
 import StoryView from '../views/StoryView.vue'
+import StoryDetailView from '../views/StoryDetailView.vue'
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: '/story',
     name: 'story',
     component: StoryView
+  },
+  {
+    path: '/story/:id',
+    name: 'story-detail',
+    component: StoryDetailView
   }
 ]
 

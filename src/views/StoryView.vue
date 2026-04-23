@@ -12,12 +12,17 @@
 
     <!-- 纯文字卡片列表页 -->
     <main class="story-grid">
-      <div v-for="story in stories" :key="story.id" class="story-card glass-card">
+      <div 
+        v-for="story in stories" 
+        :key="story.id" 
+        class="story-card glass-card clickable"
+        @click="router.push({ name: 'story-detail', params: { id: story.id } })"
+      >
         <div class="story-content">
           <h3>{{ story.title }}</h3>
           <p>{{ story.excerpt }}</p>
           <div class="story-footer">
-            <span class="date">{{ story.date }}</span>
+            <span class="date">{{ story.date || formatDate(story.created_at) }}</span>
           </div>
         </div>
       </div>
@@ -48,6 +53,11 @@ const showAuth = ref(false)
 // 从 Store 中获取数据，实现动态响应
 const stories = computed(() => toyStore.stories)
 
+const formatDate = (isoString) => {
+  if (!isoString) return ''
+  return new Date(isoString).toISOString().split('T')[0]
+}
+
 const handleAuthSuccess = () => {
   showAuth.value = false
   // 跳转到发布故事页面
@@ -56,18 +66,27 @@ const handleAuthSuccess = () => {
 </script>
 
 <style scoped>
-.story-page { width: 100%; max-width: 1200px; margin: 0 auto; padding-bottom: 5rem; }
+.story-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+  min-height: 100vh;
+  position: relative;
+}
 
 .story-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 4rem;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 10;
   padding: 0 1rem;
 }
 
-.title-group h1 { font-size: 3rem; margin-bottom: 0.5rem; }
-.title-group p { color: var(--text-secondary); font-size: 1.1rem; }
+.story-header h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+.story-header p { color: var(--text-secondary); font-size: 1.1rem; }
 
 .publish-btn {
   padding: 1.5rem 2rem !important;
@@ -77,45 +96,57 @@ const handleAuthSuccess = () => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  transition: all 0.3s !important;
 }
+
+.publish-btn:hover { transform: translateY(-3px) scale(1.05); }
 
 /* 网格布局 */
 .story-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
   padding: 0 1rem;
+  position: relative;
+  z-index: 10;
 }
 
 .story-card {
-  border-radius: 20px;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
 }
 
-.story-card:hover { transform: translateY(-10px); }
+.story-card.clickable { cursor: pointer; user-select: none; }
 
-.story-image { width: 100%; height: 240px; position: relative; overflow: hidden; }
-.story-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-.story-card:hover .story-image img { transform: scale(1.1); }
-
-.story-tag {
-  position: absolute; top: 1rem; left: 1rem;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  padding: 0.4rem 1rem;
-  border-radius: 100px;
-  font-size: 0.8rem;
-  color: #fff;
+.story-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-color);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
-.story-content { padding: 1.5rem; }
-.story-content h3 { font-size: 1.4rem; margin-bottom: 0.8rem; color: #fff; }
+.story-card:active {
+  transform: scale(0.98);
+}
+
+.story-content {
+  padding: 1.8rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.story-content h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #fff; line-height: 1.3; }
 .story-content p {
-  font-size: 0.95rem;
   color: var(--text-secondary);
+  font-size: 0.95rem;
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  flex-grow: 1;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

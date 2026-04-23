@@ -69,7 +69,7 @@ const brandsData = {
     title: '问童子',
     desc: '东方美学的潮流转世，中国创造的潮玩力量。',
     series: [
-      { id: 'wtz-all', name: '问童子全系列', image: '/pic/wentongzi/wtz01.jgp', count: 5 }
+      { id: 'wtz-all', name: '问童子全系列', image: '/pic/wentongzi/wtz01.jpg', count: 5 }
     ]
   }
 }
@@ -107,12 +107,19 @@ const goToSeries = (seriesId) => {
   align-items: center;
   gap: 1.5rem;
   position: relative;
+  z-index: 5; /* 确保卡片在背景上方 */
+  user-select: none;
 }
 
 .series-card:hover {
   transform: scale(1.02) translateY(-5px);
   border-color: var(--primary-color);
   background: rgba(255, 255, 255, 0.08);
+}
+
+.series-card:active {
+  transform: scale(0.98);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .series-preview {
@@ -147,5 +154,23 @@ const goToSeries = (seriesId) => {
 
 .series-card:hover .card-action-hint { opacity: 1; transform: translateY(-5px); }
 
-.bg-glow.blob-list { background: var(--primary-gradient); top: 10%; right: -10%; width: 500px; height: 500px; opacity: 0.2; position: absolute; filter: blur(120px); border-radius: 50%; }
+.bg-glow.blob-list { 
+  background: var(--primary-gradient); 
+  top: 10%; 
+  right: -10%; 
+  width: 500px; 
+  height: 500px; 
+  opacity: 0.2; 
+  position: absolute; 
+  filter: blur(120px); 
+  border-radius: 50%;
+  pointer-events: none; /* 核心修复：防止背景遮挡点击 */
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .header-info h1 { font-size: 2.5rem; }
+  .series-card { padding: 1rem; gap: 1rem; }
+  .series-preview { width: 80px; height: 80px; }
+}
 </style>
