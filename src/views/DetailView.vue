@@ -197,12 +197,20 @@ const seriesName = computed(() => route.params.seriesId?.toUpperCase() || 'Serie
   border: none !important;
 }
 
+.bg-glow {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: 1;
+}
+
 .bg-glow.blob-detail {
   background: var(--secondary-color);
-  top: 30%;
-  left: -20%;
-  width: 600px;
-  height: 600px;
+  bottom: -10%;
+  left: -10%;
+  width: 700px;
+  height: 700px;
   opacity: 0.15;
 }
 

@@ -4,6 +4,7 @@ import ListView from '../views/ListView.vue'
 import SeriesView from '../views/SeriesView.vue'
 import DetailView from '../views/DetailView.vue'
 import PublishView from '../views/PublishView.vue'
+import StoryView from '../views/StoryView.vue'
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/publish',
     name: 'publish',
     component: PublishView
+  },
+  {
+    path: '/story',
+    name: 'story',
+    component: StoryView
   }
 ]
 

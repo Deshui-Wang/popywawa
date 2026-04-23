@@ -1,37 +1,39 @@
 <template>
-  <Transition name="fade">
-    <div v-if="visible" class="auth-overlay">
-      <div class="auth-modal glass-card animate-scale-in">
-        <div class="glow-edge"></div>
-        <div class="auth-content">
-          <div class="auth-icon-wrapper">
-            <Lock :size="32" class="lock-icon" />
-          </div>
-          <h2>身份校验</h2>
-          <p>请输入 6 位授权密码以进入发布模式</p>
-          
-          <div class="passcode-container">
-            <input 
-              v-model="password" 
-              type="password" 
-              maxlength="6" 
-              placeholder="••••••"
-              class="passcode-input"
-              @keyup.enter="verify"
-              autofocus
-            />
-          </div>
+  <Teleport to="body">
+    <Transition name="fade">
+      <div v-if="visible" class="auth-overlay">
+        <div class="auth-modal glass-card animate-scale-in">
+          <div class="glow-edge"></div>
+          <div class="auth-content">
+            <div class="auth-icon-wrapper">
+              <Lock :size="32" class="lock-icon" />
+            </div>
+            <h2>身份校验</h2>
+            <p>请输入 6 位授权密码以进入发布模式</p>
+            
+            <div class="passcode-container">
+              <input 
+                v-model="password" 
+                type="password" 
+                maxlength="6" 
+                placeholder="••••••"
+                class="passcode-input"
+                @keyup.enter="verify"
+                autofocus
+              />
+            </div>
 
-          <div class="auth-actions">
-            <el-button @click="close" class="cancel-btn" link>取消</el-button>
-            <el-button type="primary" round class="verify-btn" @click="verify" :loading="loading">
-              验证并进入
-            </el-button>
+            <div class="auth-actions">
+              <el-button @click="close" class="cancel-btn" link>取消</el-button>
+              <el-button type="primary" round class="verify-btn" @click="verify" :loading="loading">
+                验证并进入
+              </el-button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </Transition>
+    </Transition>
+  </Teleport>
 </template>
 
 <script setup>

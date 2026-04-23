@@ -7,6 +7,7 @@
       </div>
       <nav class="nav-links">
         <router-link to="/" class="nav-item">🏠 Home</router-link>
+        <router-link to="/story" class="nav-item">📚 Story</router-link>
         <a href="#" class="nav-item">✨ Features</a>
       </nav>
       <div class="actions">
@@ -20,14 +21,24 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <p>&copy; 2026 PoPyWaWa. Built with ❤️ for the future.</p>
+      <p>&copy; 2026 PoPyWaWa. Built with Deshui ❤️ Angel for the future.</p>
     </footer>
   </div>
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useToyStore } from './store/toyStore'
+
 const router = useRouter()
+const toyStore = useToyStore()
+
+onMounted(() => {
+  // 应用启动时，从云端拉取最新数据
+  toyStore.fetchToys()
+  toyStore.fetchStories()
+})
 </script>
 
 <style scoped>
