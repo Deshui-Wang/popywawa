@@ -48,7 +48,7 @@
             class="backup-unlock-btn" 
             @click="handleOpenAuth"
           >
-            解锁库
+            别点
           </el-button>
           <span v-else class="unlocked-tag animate-fade-in">已进入档案</span>
         </div>
@@ -67,7 +67,7 @@
             <div class="msg-main">
               <div class="msg-content-wrapper">
                 <span v-if="isAuthorized" class="msg-contact visible pulse-text">{{ msg.contact }}</span>
-                <span v-else class="msg-contact hidden">••••••••••</span>
+                <span v-else class="msg-contact hidden">⏃⌰⟟⟒⋏⏁⍑⟟⋏☌⌇⏁⊑⟒⎐⍜⟟⎅</span>
               </div>
               <span class="msg-date">{{ formatDate(msg.created_at) }}</span>
             </div>
@@ -216,11 +216,18 @@ onMounted(() => {
 }
 
 .msg-emoji { font-size: 1.5rem; }
-.msg-main { display: flex; flex-direction: column; gap: 0.3rem; }
-.msg-date { color: var(--text-secondary); font-size: 0.75rem; }
+.msg-main { flex: 1; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.msg-date { color: var(--text-secondary); font-size: 0.8rem; font-family: monospace; }
 
 .msg-contact.visible { color: var(--primary-color); font-weight: 600; font-size: 1rem; }
-.msg-contact.hidden { color: rgba(255, 255, 255, 0.2); letter-spacing: 2px; font-size: 0.9rem; }
+.msg-contact.hidden { 
+  color: rgba(147, 197, 253, 0.4); 
+  letter-spacing: 4px; 
+  font-size: 0.9rem; 
+  filter: blur(0.8px);
+  text-shadow: 0 0 8px rgba(147, 197, 253, 0.3);
+  user-select: none;
+}
 
 .empty-hint { text-align: center; color: var(--text-secondary); padding: 4rem 2rem; border: 1px dashed rgba(255,255,255,0.1); border-radius: 20px; }
 

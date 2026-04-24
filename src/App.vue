@@ -3,7 +3,8 @@
     <!-- Shared Navbar -->
     <header class="navbar glass-card">
       <div class="logo cursor-pointer" @click="router.push('/')">
-        <span class="gradient-text">PoPyWaWa</span>
+        <img src="/pic/delove/DeLove03_transparent.png" alt="PoPyWaWa Logo" class="logo-img" />
+        <span class="gradient-text logo-text">PoPyWaWa</span>
       </div>
       <nav class="nav-links">
         <router-link to="/" class="nav-item">🏠 Home</router-link>
@@ -67,11 +68,36 @@ onMounted(() => {
 
 .logo {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  perspective: 1000px;
+  margin-left: -1.5rem; /* 整体向左移动 */
 }
 
-.logo span {
-  font-size: 1.5rem;
-  letter-spacing: 2px;
+.logo-img {
+  height: 90px; /* 大尺寸，溢出导航栏 */
+  width: auto;
+  object-fit: contain;
+  margin-top: -45px; /* 向上突破边界 */
+  margin-bottom: -25px; /* 向下轻微突破 */
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5));
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-origin: center bottom;
+  position: relative;
+  z-index: 10;
+}
+
+.logo:hover .logo-img {
+  transform: scale(1.15) rotateX(10deg) rotateY(-10deg) translateY(-10px);
+  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.7));
+}
+
+.logo-text {
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  font-weight: 900;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .nav-links {
