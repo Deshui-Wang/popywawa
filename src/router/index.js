@@ -6,6 +6,8 @@ import DetailView from '../views/DetailView.vue'
 import PublishView from '../views/PublishView.vue'
 import StoryView from '../views/StoryView.vue'
 import StoryDetailView from '../views/StoryDetailView.vue'
+import NetworkView from '../views/NetworkView.vue'
+import JoinView from '../views/JoinView.vue'
 
 const routes = [
   {
@@ -42,6 +44,16 @@ const routes = [
     path: '/story/:id',
     name: 'story-detail',
     component: StoryDetailView
+  },
+  {
+    path: '/network',
+    name: 'network',
+    component: NetworkView
+  },
+  {
+    path: '/join',
+    name: 'join',
+    component: JoinView
   }
 ]
 

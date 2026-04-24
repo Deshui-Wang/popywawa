@@ -8,10 +8,12 @@
       <nav class="nav-links">
         <router-link to="/" class="nav-item">🏠 Home</router-link>
         <router-link to="/story" class="nav-item">📚 Story</router-link>
-        <a href="#" class="nav-item">✨ Features</a>
+        <router-link to="/network" class="nav-item">🕸️ 关系网</router-link>
       </nav>
       <div class="actions">
-        <el-button type="primary" round class="premium-button">Join Now</el-button>
+        <el-button @click="router.push('/join')" class="premium-join-btn">
+          <span>Join Now</span>
+        </el-button>
       </div>
     </header>
 
@@ -86,6 +88,25 @@ onMounted(() => {
 
 .nav-item:hover, .router-link-active {
   color: var(--text-primary);
+}
+
+.premium-join-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 100px !important;
+  padding: 0.8rem 1.8rem !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.premium-join-btn:hover {
+  background: var(--primary-gradient) !important;
+  border-color: transparent !important;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+  transform: translateY(-2px);
 }
 
 .footer {
