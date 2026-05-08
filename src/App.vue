@@ -3,7 +3,7 @@
     <!-- Shared Navbar -->
     <header class="navbar glass-card">
       <div class="logo cursor-pointer" @click="router.push('/')">
-        <img src="/pic/delove/DeLove03_transparent.png" alt="PoPyWaWa Logo" class="logo-img" />
+        <img src="/pic/delove/popywawa_square.png" alt="PoPyWaWa Logo" class="logo-img" />
         <span class="gradient-text logo-text">PoPyWaWa</span>
       </div>
       <nav class="nav-links">
